@@ -1,0 +1,30 @@
+/* footer */
+
+.footer-bg {
+    background-color: #F8F8F8;
+    padding-top: 4.5rem;
+    padding-bottom: 10rem;
+}
+
+.footer-title {
+    font-size: 1.125rem;
+    color: #001E00;
+}
+
+.footer-line {
+    border-color: #001E00;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-link {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+    color: #001E00;
+}
+
+.footer-link:hover {
+    color: #001E00;
+}
+
