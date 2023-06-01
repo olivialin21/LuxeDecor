@@ -1,6 +1,6 @@
 /* header */
 .base_logo {
-  font-family: Alike, sans-serif;
+  font-family: Antic Didone, sans-serif;
   font-size: 32px;
   margin-bottom: 0;
   letter-spacing: 0.12em;
@@ -83,6 +83,7 @@
 /* footer */
 
 .footer-bg {
+  font-family: Mulish, serif;
   background-color: #F8F8F8;
   padding-top: 4.5rem;
   padding-bottom: 10rem;
@@ -108,4 +109,8 @@
 
 .footer-link:hover {
   color: #001E00;
+}
+
+.footer-icon:hover {
+  text-decoration: none;
 }
