@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/product.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}LuxeDécor | Product{% endblock %}
+
+{% block content %}
+    <img src="{% static 'images/product_living_banner.png' %}"  
+        height="576px" width="100%" style="object-fit: cover; margin: 0;" />
+    <div class="collection-bg">
+        <div class="container">
+            <div class=" d-flex flex-column align-items-center">
+                <p class="collection-title">
+                    The Living Room Collection
+                </p>
+                <p class="collection-text">
+                    Timeless shapes designed with luxe detail, handcrafted to order for unparalleled comfort and longevity.
+                </p>
+            </div>
+            
+            <div class="category">
+                <a href="#" class="category-item">
+                    <img src="{% static 'images/product_living_sofa.png' %}" width="100%" />
+                    Shop Sofas
+                </a>
+                <a href="#" class="category-item">
+                    <img src="{% static 'images/product_living_table.png' %}" width="100%" />
+                    Shop Tables
+                </a>
+                <a href="#" class="category-item">
+                    <img src="{% static 'images/product_living_chair.png' %}" width="100%"/>
+                    Shop Chairs
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container product-wrapper">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mb-5">
+                <div class="category-item">
+                    <a href="#">
+                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                    </a>
+                    <div class="d-flex justify-content-between w-100 px-3">
+                        <div>
+                            <a href="#" class="product-text">
+                                The Chelsea Sofa 
+                            </a>
+                            <p class="product-price">
+                                $4500
+                            </p>
+                        </div>
+                        <a href="#" class="button">
+                            <img src="{% static 'images/shopping_cart.svg' %}" width="19px" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
