@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/detail.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}LuxeDécor | Product{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-7 mb-5">
+                <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                <div class="row mt-5">
+                    <div class="col-3">
+                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                    </div>
+                    <div class="col-3">
+                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-5">
+                <p class="text">Living / Sofa</p>
+                <p class="title">The Chelsea Chair</p>
+                <p class="text">
+                    Ships in 5-6 weeks <br />
+                    Unlimited White Glove Delivery from $145
+                </p>
+                <hr class="line">
+                <p class="text">
+                    With fluid lines and sensual curves, The Chelsea Sofa pays tribute to the softer side of mid-century design. The U-shaped silhouette and wraparound arms subtly embrace, while a tightly upholstered seat and back lend polish
+                </p>
+                <p class="text">
+                    75-120”W, 36.5”D, 30”H
+                </p>
+                <hr class="line">
+                <p class="text" style="font-weight: bold;">SHOWN</p>
+                <p  class="text">
+                    Fabric or Leather: Italian Bouclé - White<br/>
+                    Finish: Driftwood<br/>
+                    Size: 100" Wide
+                </p>
+                <div class="count">
+                    <button class="add">-</button>
+                    1
+                    <button class="add">+</button>
+                </div>
+                <button class="button">
+                    Aaa to your cart  －＄3000
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
