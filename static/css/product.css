@@ -72,6 +72,24 @@ body {
 }
 
 .product-wrapper {
-    margin-top: 11.6rem;
+    /* margin-top: 11.6rem; */
+    margin-top: 10rem;
     margin-bottom: 16rem;
+}
+
+.text {
+    font-family: Mulish, sans-serif;
+    color: #3B5233;
+    font-size: 1rem;
+    line-height: 25px;
+}
+
+.text:hover {
+    color: #3B5233;
+}
+
+.empty {
+    font-size: 1.5rem;
+    color: #000;
+    font-family: Antic Didone, sans-serif;
 }

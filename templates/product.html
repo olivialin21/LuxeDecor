@@ -6,57 +6,125 @@
 {% block title %}LuxeDécor | Product{% endblock %}
 
 {% block content %}
-    <img src="{% static 'images/product_living_banner.png' %}"  
-        height="576px" width="100%" style="object-fit: cover; margin: 0;" />
+    {% if category == "Living" %}
+        <img src="{% static 'images/product_living_banner.png' %}"  
+            height="576px" width="100%" style="object-fit: cover; margin: 0;" />
+    {% elif category == "Dining" %}
+        <img src="{% static 'images/product_dining_banner.png' %}"  
+            height="576px" width="100%" style="object-fit: cover; margin: 0;" />
+    {% else %}
+        <img src="{% static 'images/product_bedroom_banner.png' %}"  
+            height="576px" width="100%" style="object-fit: cover; margin: 0;" />
+    {% endif %}
+    
     <div class="collection-bg">
         <div class="container">
             <div class=" d-flex flex-column align-items-center">
                 <p class="collection-title">
-                    The Living Room Collection
+                    {% if category == "Living" %}
+                        {% if subCategory != None %}
+                            The Living Room Collection | {{ subCategory }}
+                        {% else %}
+                            The Living Room Collection
+                        {% endif %}
+                    {% elif category == "Dining" %}
+                        {% if subCategory != None %}
+                            The Dining Room Collection | {{ subCategory }}
+                        {% else %}
+                            The Dining Room Collection
+                        {% endif %}
+                    {% else %}
+                        {% if subCategory != None %}
+                            The Bedroom Collection | {{ subCategory }}
+                        {% else %}
+                            The Bedroom Collection
+                        {% endif %}
+                    {% endif %}
                 </p>
                 <p class="collection-text">
                     Timeless shapes designed with luxe detail, handcrafted to order for unparalleled comfort and longevity.
                 </p>
             </div>
-            
             <div class="category">
-                <a href="#" class="category-item">
-                    <img src="{% static 'images/product_living_sofa.png' %}" width="100%" />
-                    Shop Sofas
-                </a>
-                <a href="#" class="category-item">
-                    <img src="{% static 'images/product_living_table.png' %}" width="100%" />
-                    Shop Tables
-                </a>
-                <a href="#" class="category-item">
-                    <img src="{% static 'images/product_living_chair.png' %}" width="100%"/>
-                    Shop Chairs
-                </a>
+                {% if category == "Living" %}
+                    <a href="/product/category/Living/Sofa/" class="category-item">
+                        <img src="{% static 'images/product_living_sofa.png' %}" width="100%" />
+                        Shop Sofas
+                    </a>
+                    <a href="/product/category/Living/Table/" class="category-item">
+                        <img src="{% static 'images/product_living_table.png' %}" width="100%" />
+                        Shop Tables
+                    </a>
+                    <a href="/product/category/Living/Chair/" class="category-item">
+                        <img src="{% static 'images/product_living_chair.png' %}" width="100%"/>
+                        Shop Chairs
+                    </a>
+                {% elif category == "Dining" %}
+                    <a href="/product/category/Dining/Table/" class="category-item">
+                        <img src="{% static 'images/product_dining_table.png' %}" width="100%" />
+                        Shop Tables
+                    </a>
+                    <a href="/product/category/Dining/Chair/" class="category-item">
+                        <img src="{% static 'images/product_dining_chair.png' %}" width="100%"/>
+                        Shop Chairs
+                    </a>
+                    <a href="/product/category/Dining/Storage/" class="category-item">
+                        <img src="{% static 'images/product_dining_storage.png' %}" width="100%" />
+                        Shop Storage
+                    </a>
+                {% else %}
+                    <a href="/product/category/Bedroom/Bed/" class="category-item">
+                        <img src="{% static 'images/product_bedroom_bed.png' %}" width="100%" />
+                        Shop Beds
+                    </a>
+                    <a href="/product/category/Bedroom/Dresser/" class="category-item">
+                        <img src="{% static 'images/product_bedroom_dresser.png' %}" width="100%" />
+                        Shop Dressers
+                    </a>
+                    <a href="/product/category/Bedroom/Bedding/" class="category-item">
+                        <img src="{% static 'images/product_bedroom_bedding.png' %}" width="100%"/>
+                        Shop Bedding
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="container product-wrapper">
+        <p class="text" style="margin-bottom: 4rem;">
+            {% if subCategory != None %}
+                <a class="text" href="/product/category/{{ category }}/">
+                    {{ category }} 
+                </a> 
+                / <span style="opacity: 0.6;">{{ subCategory }}</span>
+            {% endif %}
+         </p>
         <div class="row">
-            <div class="col-xs-12 col-md-6 mb-5">
-                <div class="category-item">
-                    <a href="#">
-                        <img src="{% static 'images/placeholder.png' %}" width="100%" />
-                    </a>
-                    <div class="d-flex justify-content-between w-100 px-3">
-                        <div>
-                            <a href="#" class="product-text">
-                                The Chelsea Sofa 
-                            </a>
-                            <p class="product-price">
-                                $4500
-                            </p>
-                        </div>
-                        <a href="#" class="button">
-                            <img src="{% static 'images/shopping_cart.svg' %}" width="19px" />
+            {% for item in product %}
+                <div class="col-xs-12 col-md-6 mb-5">
+                    <div class="category-item">
+                        <a href="{% url 'detail' item.slug %}">
+                            <img src="{{ item.image.url }}" width="100%" />
                         </a>
+                        <div class="d-flex justify-content-between w-100 px-3">
+                            <div>
+                                <a href="{% url 'detail' item.slug %}" class="product-text">
+                                    {{ item.title }}
+                                </a>
+                                <p class="product-price">
+                                    ${{ item.price }}
+                                </p>
+                            </div>
+                            <a href="#" class="button">
+                                <img src="{% static 'images/shopping_cart.svg' %}" width="19px" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% empty %}
+                <div class="col-12 mb-5">
+                    <p class="empty">Coming Soon.</p>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

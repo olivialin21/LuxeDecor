@@ -11,6 +11,10 @@
     line-height: 25px;
 }
 
+.text:hover {
+    color: #3B5233;
+}
+
 .title {
     font-family: Antic Didone, sans-serif;
     color: #3B5233;
