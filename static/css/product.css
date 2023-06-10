@@ -39,7 +39,6 @@ body {
 }
 
 .category-item:hover {
-    /* text-decoration: none; */
     color: #000;
 }
 
@@ -72,7 +71,6 @@ body {
 }
 
 .product-wrapper {
-    /* margin-top: 11.6rem; */
     margin-top: 10rem;
     margin-bottom: 16rem;
 }

@@ -9,11 +9,6 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
-# class Tag(models.Model):
-#     title = models.CharField(max_length=255, default="")
-
-#     def __str__(self):
-#         return self.title
 class SubCategory(models.Model):
     title = models.CharField(max_length=255, default="")
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -41,7 +36,6 @@ class Product(models.Model):
 
     shipping_time = models.CharField(max_length=255, blank=True, default="")
     shipping_price = models.CharField(max_length=255, blank=True, default="")
-    # tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title

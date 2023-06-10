@@ -5,14 +5,6 @@ from web.models import Product, Category, SubCategory
 def index(request):
   return render(request, 'index.html')
 
-# def product(request):
-#   products = Product.objects.all()
-
-#   return render(request, 'product.html', {'products': products})
-
-# def detail(request):
-# 	return render(request, 'detail.html')
-
 def product(request, category_name, subcategory_name=None):
     try:
         category = Category.objects.get(title=category_name)
