@@ -1,0 +1,144 @@
+/* header */
+.base_logo {
+  font-family: Alike, sans-serif;
+  font-size: 32px;
+  margin-bottom: 0;
+  letter-spacing: 0.12em;
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  transform: translateX(-50%);
+}
+
+.base_navbar {
+  background-color: #ece9e6;
+  padding: 30px 24px;
+}
+
+.base_navbar a {
+  color: #333333;
+}
+
+.base_navbar_item {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  margin-left: 20px;
+  transition: all 0.3s;
+}
+
+.base_navbar_item:hover {
+  opacity: 0.5;
+}
+
+.base_navbar_item img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.base_navbar_item span {
+  vertical-align: middle;
+}
+
+.base_navbar_toggler_icon {
+  line-height: 1.5em;
+}
+
+.base_nav {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.base_nav_item {
+  font-family: Antic Didone, sans-serif;
+  padding: 0;
+}
+
+.base_nav_item a {
+  display: block;
+  padding: 20px 0;
+  font-size: 20px;
+  color: #333333;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.base_nav_item a:hover {
+  background-color: #f3f3f3;
+}
+
+.base_navbar_collapse {
+  flex-grow: 0;
+}
+
+.base_dropdown_menu {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.base_dropdown_menu a {
+  width: 100%;
+}
+
+/* content */
+
+.content-line {
+  border: 4px solid #a3790d;
+  width: 160px;
+  margin: 3rem;
+}
+
+.contentline-Area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-Text {
+  width: 40%;
+  font-family: "Antic Didone" !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  margin-top: 3rem;
+  color: #000000;
+}
+
+.content-Title {
+  font-family: "Antic Didone";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 62px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.content-Area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
+
+.Area2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  /* margin: 3rem; */
+}
+
+.content-Detail {
+  font-family: "Antic Didone";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  color: #0c0c0c;
+}
