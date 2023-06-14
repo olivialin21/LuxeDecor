@@ -1,13 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from web.models import Product, Category, SubCategory
 
-# 匯入相關套件
-from django.http import HttpResponse
 # login authentication
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.models import User
-
 # Create your views here.
 
 
@@ -62,10 +59,14 @@ def account(request):
 
 def mypage(request):
     if request.user.is_authenticated:
-        name = request.user.username
+        first_name = request.user.first_name
+        name = first_name + " " + request.user.last_name
+        email = request.user.email
     else:
+        first_name = None
         name = None
-    return render(request, "mypage.html", {'name': name})
+        email = None
+    return render(request, "mypage.html", {'first_name': first_name, 'name': name, 'email': email})
 
 
 def login(request):
@@ -82,12 +83,15 @@ def login(request):
                 mess = 'This account does not exist.'
         else:
             mess = 'Login failed.'
+    else:
+        mess = ""
     return render(request, "login.html", locals())
 
 
 def logout(request):
     auth.logout(request)
     return redirect('/login/')
+
 
 def register(request):
     if request.method == "POST":
@@ -107,10 +111,34 @@ def register(request):
                 user.first_name = firstName  # 姓名
                 user.last_name = lastName  # 姓氏
                 user.save()
-                auth.login(request,user)
+                auth.login(request, user)
                 return redirect('/mypage/')
         else:
             mess = "Please fill in all the required information."
     else:
-        mess = "Registration failed."
+        mess = ""   
     return render(request, "register.html", locals())
+
+
+def edit(request):
+    user = request.user
+    if request.method == "POST":
+        if request.POST['first_name'] != "" and request.POST['last_name'] != "" and request.POST['account'] != "":
+            first_name = request.POST.get('first_name', '').strip()
+            last_name = request.POST.get('last_name', '').strip()
+            account = request.POST.get('account', '').strip()
+
+            # 更新用户的姓氏和名字
+            user.first_name = first_name
+            user.last_name = last_name
+            user.username = account
+            user.email = account
+            user.save()
+
+            # 重定向到用户的个人资料页面或其他适当的页面
+            return redirect('/mypage/')
+        else:
+            mess = "Please fill in all the required information."
+    else:
+        mess = ""
+    return render(request, 'edit.html', {'user': user, 'mess': mess})

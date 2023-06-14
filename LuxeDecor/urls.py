@@ -32,5 +32,6 @@ urlpatterns = [
     path('login/', webviews.login),
     path('logout/', webviews.logout),
     path('mypage/', webviews.mypage),
+    path('edit/', webviews.edit),
     path('register/', webviews.register),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

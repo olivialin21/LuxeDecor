@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/mypage.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}Edit{% endblock %}
+{% block content %}
+<div class="mypage">
+    <div class="container mypage-content">
+        {% if request.user.is_authenticated %}
+        <h2>Account</h2>
+        <div class="mypage-title">
+            <h3>My Info</h3>
+        </div>
+        <form method="post" action="/edit/">
+            {% csrf_token %}
+            <div class="row justify-content-between">
+                <div class="col-6">
+                    <label for="first_name">FIRST NAME *</label>
+                    <input class="edit-input" type="text" id="first_name" name="first_name"
+                        value="{{ user.first_name }}"><br>
+                </div>
+                <div class="col-6">
+                    <label for="last_name">LAST NAME *</label>
+                    <input class="edit-input" type="text" id="last_name" name="last_name"
+                        value="{{ user.last_name }}"><br>
+                </div>
+            </div>
+            <label for="last_name">EMAIL ADDRESS *</label>
+            <input class="edit-input" type="email" id="account" name="account" value="{{ user.username }}"><br>
+            <div class="d-flex align-items-center mb-4">
+                <input type="checkbox" class="mypage-news" name="news" id="news">
+                <label class="mypage-news-label" for="news">Subscribe to our newsletter</label>
+            </div>
+            <input class="col-10 logout edit-submit" type="submit" value="UPDATE ACCOUNT">
+            <p class="mess">{{mess}}</p>
+        </form>
+        {% else %}
+        <h2>You are not logged in yet!</h2>
+        <a class="logout" href="/login/">LOGIN</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+<form method="post" action="{% url 'update_profile' %}">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}"><br>
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}"><br>
+    <input type="submit" value="Update Profile">
+</form>

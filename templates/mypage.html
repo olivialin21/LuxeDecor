@@ -5,13 +5,25 @@
 {% endblock %}
 {% block title %}Member{% endblock %}
 {% block content %}
-{% if request.user.is_authenticated %}
-<h2>Hi！{{first_name}}</h2>
-歡迎光臨:{{name}}
-<p><a href="/logout/">登出</a></p>
-{% else %}
-<h2>您尚未登入喔~</h2>
-<a href="/login/">登入</a>
-{% endif %}
-<span style="color:red">{{mess}}</span>
+<div class="mypage">
+    <div class="container mypage-content">
+        {% if request.user.is_authenticated %}
+        <h2>Hi！{{first_name}}</h2>
+        <div class="d-flex justify-content-between align-items-center mypage-title">
+            <h3>My Info</h3>
+            <a href="/edit/">
+                <img src="{% static "images/icon_edit.png" %}" alt="edit">
+            </a>
+        </div>
+        <ul>
+            <li>Name：　{{name}}</li>
+            <li>Email：　{{email}}</li>
+        </ul>
+        <a class="logout" href="/logout/">Logout</a>
+        {% else %}
+        <h2>You are not logged in yet!</h2>
+        <a class="logout" href="/login/">LOGIN</a>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
