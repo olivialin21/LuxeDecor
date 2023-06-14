@@ -10,7 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <!-- <link rel="stylesheet" href="../static/css/reset.css"> -->
   <link href="{% static 'css/reset.css' %}" rel="stylesheet" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +18,6 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="../static/css/base.css"> -->
   <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css" />
   {% block css %}{% endblock %}
 </head>
@@ -37,13 +35,13 @@
     <div class="collapse navbar-collapse base_navbar_collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item base_navbar_item">
-          <a class="nav-link" href="/newsindex">
+          <a class="nav-link" href="/account">
             <img src="{% static 'images/login.svg' %}" alt="login">
             <span>ACCOUNT</span>
           </a>
         </li>
         <li class="nav-item base_navbar_item">
-          <a class="nav-link" href="/newsindex">
+          <a class="nav-link" href="/shoppingCart">
             <img src="{% static 'images/shopping_cart.svg' %}" alt="shopping_cart">
             <span>CART</span>
           </a>
@@ -58,7 +56,7 @@
   </nav>
   <ul class="nav justify-content-center base_nav row">
     <li class="nav-item base_nav_item col-6 col-sm-3">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true"
         aria-expanded="false">PRODUCT</a>
       <div class="dropdown-menu base_dropdown_menu">
         <a class="dropdown-item" href="/product/category/Living/">Living</a>

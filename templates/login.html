@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/account.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="login">
+    <div class="container">
+        <div class="row align-items-center">
+            <h2 class="col-6">The Best furniture<br>Website to Discover</h2>
+            <form class="col-6 form" action="/login/" method="POST" name="form1">
+                <h3>Furniture website</h3>
+                <h4>Sign into your account</h4>
+                {% csrf_token %}
+                <input class="input input-account" type="text" name="username" id="username" placeholder="Email address"/>
+                <input class="input input-password" type="password" name="password" id="password" placeholder="Password"/>
+                <a class="login-forgot" href="javascript:void(0)">Forgot password?</a><br>
+                <a class="login-register" href="/register">Don’t have an account？Register here</a>
+                <input class="input input-submit" type="submit" name="button" id="button" value="LOGIN" />
+                <p class="mess">{{mess}}</p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

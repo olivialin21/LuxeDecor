@@ -1,0 +1,131 @@
+/* common */
+.login h2,
+.register h2,
+.login h3,
+.register h3 {
+    font-family: Antic Didone, serif;
+    font-size: 40px;
+    color: #3B5233;
+}
+
+.login input,
+.register input {
+    display: block;
+    padding: 20px 30px;
+    font-family: Antic, sans-serif;
+    font-size: 24px;
+    color: #000;
+    background-color: #F2F2F2;
+    border-radius: 16px;
+    border: 1px solid #848484;
+    width: 100%;
+}
+
+.login input:focus,
+.register input:focus {
+    outline: 1px solid #3B5233;
+}
+
+.login form,
+.register form {
+    background-color: #F3F3F3;
+    border: 1px solid #000;
+    border-radius: 28px;
+    padding: 75px;
+}
+
+.login .input-submit,
+.register .input-submit {
+    color: #fff;
+    background-color: #827B7B;
+    transition: all 0.3s;
+}
+
+.login .input-submit:hover,
+.register .input-submit:hover {
+    background-color: #3B5233;
+}
+
+input::placeholder {
+    color: #A09D9D;
+}
+
+.mess {
+    color: #631111;
+    font-size: 24px;
+    margin: 0;
+    margin-top: 16px;
+    text-align: center;
+    font-family: Antic, sans-serif;
+}
+
+/* login */
+.login {
+    background-color: #ECE9E6;
+    padding-top: 84px;
+    padding-bottom: 124px;
+}
+
+.login h4 {
+    font-family: Antic Didone, serif;
+    font-size: 24px;
+    color: #3B5233;
+    margin: 32px 0 38px;
+}
+
+.login a {
+    display: inline-block;
+    text-decoration: none;
+    font-family: antic, sans-serif;
+    font-size: 20px;
+}
+
+.input-account {
+    margin-bottom: 42px;
+}
+
+.input-password {
+    margin-bottom: 38px;
+}
+
+.login-forgot {
+    color: #727272;
+    margin-bottom: 14px;
+    transition: all 0.3s;
+}
+
+.login-register {
+    color: #232323;
+    margin-bottom: 37px;
+    transition: all 0.3s;
+}
+
+.login-forgot:hover,
+.login-register:hover {
+    color: #3B5233;
+}
+
+/* register */
+.register {
+    background-color: #ECE9E6;
+    padding-top: 84px;
+    padding-bottom: 124px;
+}
+
+.register .input-news {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #848484;
+    margin-left: 25px;
+    border-radius: 8px;
+    background-color: #EEEEEE;
+}
+
+.input-news-label{
+    font-family: Antic, sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    color: #A09D9D;
+}

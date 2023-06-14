@@ -16,16 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web.views import index, product, detail,about
+from web import views as webviews
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', index),
-    path('about/', about),
-    path('product/category/<str:category_name>/<str:subcategory_name>/', product),
-    path('product/category/<str:category_name>/', product),
-    path('product/<slug:slug>/', detail, name='detail'),
-
+    path('', webviews.index),
+    path('about/', webviews.about),
+    path('product/category/<str:category_name>/<str:subcategory_name>/', webviews.product),
+    path('product/category/<str:category_name>/', webviews.product),
+    path('product/<slug:slug>/', webviews.detail, name='detail'),
+    # login
+    path('account/', webviews.account),
+    path('login/', webviews.login),
+    path('logout/', webviews.logout),
+    path('mypage/', webviews.mypage),
+    path('register/', webviews.register),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

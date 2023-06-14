@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/mypage.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}Member{% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+<h2>Hi！{{first_name}}</h2>
+歡迎光臨:{{name}}
+<p><a href="/logout/">登出</a></p>
+{% else %}
+<h2>您尚未登入喔~</h2>
+<a href="/login/">登入</a>
+{% endif %}
+<span style="color:red">{{mess}}</span>
+{% endblock %}

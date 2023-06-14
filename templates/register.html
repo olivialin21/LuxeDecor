@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/account.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<div class="register">
+    <div class="container">
+        <div class="row align-items-center">
+            <h2 class="col-6">Sign up your<br>account！！</h2>
+            <form class="col-6 form" action="/register/" method="POST" name="form1">
+                {% csrf_token %}
+                <div class="row justify-content-between mx-0 mb-5">
+                    <input type="text" class="input col-5" id="firstName" name="firstName" placeholder="First name">
+                    <input type="text" class="input col-5" id="lastName" name="lastName" placeholder="Last name">
+                </div>
+                <input type="email" class="input mb-5" id="account" name="account" placeholder="Email address">
+                <input type="password" class="input mb-4" id="password" name="password" placeholder="Password">
+                <div class="d-flex align-items-center mb-4">
+                    <input type="checkbox" class="input-news" name="news" id="news">
+                    <label class="input-news-label" for="news">Subscribe to our newsletter</label>
+                </div>
+                <input class="input input-submit" type="submit" name="button" id="button" value="SIGN UP" />
+                <p class="mess">{{mess}}</p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
