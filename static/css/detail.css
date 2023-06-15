@@ -1,3 +1,7 @@
+a, a:hover, a:visited, a:active{
+    text-decoration: none;   
+}
+
 .images {
     display: flex;
     width: 100%;
@@ -59,6 +63,9 @@
     height: 3.68rem;
     margin-bottom: 8.3rem;
     margin-top: 1.6rem;
+    
+    text-align: center;
+    line-height: 3.68rem;
 }
 
 .button:hover {

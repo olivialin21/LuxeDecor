@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.db.models import Q
+from decimal import Decimal
 
 def index(request):
     return render(request, 'index.html')
@@ -148,7 +148,24 @@ def shoppingCart(request):
     cart = request.COOKIES.get('cart')  # 從 Cookie 中獲取購物車數據
     cart_items = []
     total_price = 0
-    if cart:
+    if request.user.is_authenticated:
+        user = request.user
+
+        # 從後端資料庫獲取使用者的購物車項目
+        cart_items_data = user.cart_items.all()
+
+        for cart_item in cart_items_data:
+            product = cart_item.product
+            quantity = cart_item.quantity
+            price = round(Decimal(product.price) * quantity)
+
+            total_price += price
+            cart_items.append({
+                'product': product,
+                'quantity': quantity,
+                'price': price
+            })
+    elif cart:
         cart_items_data = parseCartItems(cart)  # 解析購物車內容
 
         # 從資料庫中獲取購物車內商品的詳細資訊
@@ -158,7 +175,8 @@ def shoppingCart(request):
         # 計算金額總和並建立商品清單
         for product in products:
             quantity = cart_items_data[product.id]
-            price = product.price * quantity
+            price = round(Decimal(product.price) * quantity)
+
             total_price += price
             cart_items.append({
                 'product': product,
@@ -199,13 +217,6 @@ def addToCart(request, id=None):
     # 將更新後的購物車內容存回 Cookie
     response = redirect(request.META.get('HTTP_REFERER', '/'))
     response.set_cookie('cart', updated_cart)
-
-    if request.user.is_authenticated:
-        user = request.user
-        # 將購物車內容同步到後台
-        user.cart_items.all().delete()  # 刪除用戶現有的購物車項目
-        for product_id, quantity in cart_items.items():
-            CartItem.objects.create(user=user, product_id=product_id, quantity=quantity)
 
     return response
 
