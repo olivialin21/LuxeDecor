@@ -1,73 +1,80 @@
 {% extends "base.html" %}
 {% load static %}
 {% block css %}
-    <link rel="stylesheet" href="{% static "css/detail.css" %}" type="text/css" />
+<link rel="stylesheet" href="{% static "css/detail.css" %}" type="text/css" />
 {% endblock %}
 {% block title %}LuxeDécor | Product{% endblock %}
 
 {% block content %}
-    <div class="container detail-mt">
-        <div class="row">
-            <div class="col-xs-12 col-md-7 mb-5 px-4">
-                <img src="{{ product.image.url }}" width="100%" />
-                <div class="row mt-5">
-                    <div class="col-3">
-                        <img src="{{ product.image1.url }}" width="100%" />
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ product.image2.url }}" width="100%" />
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ product.image3.url }}" width="100%" />
-                    </div>
-                    <div class="col-3">
-                        <img src="{{ product.image4.url }}" width="100%" />
-                    </div>
+<div class="container detail-mt">
+    <div class="row">
+        <div class="col-xs-12 col-md-7 mb-5 px-4">
+            <img src="{{ product.image.url }}" width="100%" />
+            <div class="row mt-5">
+                <div class="col-3">
+                    <img src="{{ product.image1.url }}" width="100%" />
+                </div>
+                <div class="col-3">
+                    <img src="{{ product.image2.url }}" width="100%" />
+                </div>
+                <div class="col-3">
+                    <img src="{{ product.image3.url }}" width="100%" />
+                </div>
+                <div class="col-3">
+                    <img src="{{ product.image4.url }}" width="100%" />
                 </div>
             </div>
-            <div class="col-xs-12 col-md-5 px-4">
-                <p class="text">
-                   <a class="text" href="/product/category/{{ product.category }}/">
-                    {{ product.category }} 
-                   </a> / 
-                   <a class="text" href="/product/category/{{ product.category }}/{{ product.sub_category }}">
+        </div>
+        <div class="col-xs-12 col-md-5 px-4">
+            <p class="text">
+                <a class="text" href="/product/category/{{ product.category }}/">
+                    {{ product.category }}
+                </a> /
+                <a class="text" href="/product/category/{{ product.category }}/{{ product.sub_category }}">
                     {{ product.sub_category }}
-                   </a>
-                </p>
-                <p class="title">{{ product.title }}</p>
-                <p class="text">
-                    {{ product.shipping_time }}<br />
-                    {{ product.shipping_price }}
-                </p>
-                <hr class="line">
-                <p class="text">
-                    {{ product.description }}
-                </p>
-                <p class="text">
-                    {{ product.width }}”W, {{ product.depth }}”D, {{ product.height }}”H
-                </p>
-                <hr class="line">
-                <p class="text" style="font-weight: bold;">SHOWN</p>
-                <p  class="text">
-                    {% if product.fabric != "" %}
-                        Fabric or Leather: {{ product.fabric }}<br/>
-                    {% endif %}
-                    {% if product.finish != "" %}
-                        Finish: {{ product.finish }}<br/>
-                    {% endif %}
-                    Size: {{ product.width }}" Wide
-                </p>
-                <div class="count">
-                    <button class="add">-</button>
-                    1
-                    <button class="add">+</button>
-                </div>
-                <a href="/addToCart/{{ product.id }}/" class="d-block button">
-                    Aaa to your cart  －＄{{ product.price }}
                 </a>
+            </p>
+            <p class="title">{{ product.title }}</p>
+            <p class="text">
+                {{ product.shipping_time }}<br />
+                {{ product.shipping_price }}
+            </p>
+            <hr class="line">
+            <p class="text">
+                {{ product.description }}
+            </p>
+            <p class="text">
+                {{ product.width }}”W, {{ product.depth }}”D, {{ product.height }}”H
+            </p>
+            <hr class="line">
+            <p class="text" style="font-weight: bold;">SHOWN</p>
+            <p class="text">
+                {% if product.fabric != "" %}
+                Fabric or Leather: {{ product.fabric }}<br />
+                {% endif %}
+                {% if product.finish != "" %}
+                Finish: {{ product.finish }}<br />
+                {% endif %}
+                Size: {{ product.width }}" Wide
+            </p>
+            <div class="quantity-control">
+                <form method="post" action="/addToCart/decrease_quantity/">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity_decrease" value="{{ addToCart_quantity }}">
+                    <button class="decrease" type="submit">－</button>
+                </form>
+                <p>{{ addToCart_quantity }}</p>
+                <form method="post" action="/addToCart/increase_quantity/">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity_increase" value="{{ addToCart_quantity }}">
+                    <button class="increase" type="submit">＋</button>
+                </form>    
             </div>
+            <a href="{% url 'addToCart' product.id %}?addToCart_quantity={{ addToCart_quantity }}" class="d-block button">
+                Add to your cart － ${{ product.price|floatformat:0 }}
+            </a>
         </div>
 
     </div>
 
-{% endblock %}
+    {% endblock %}

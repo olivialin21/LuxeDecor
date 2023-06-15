@@ -82,3 +82,37 @@ a, a:hover, a:visited, a:active{
         width: 21.6rem;
     }
 }
+
+/* shopping cart */
+.quantity-control {
+    display: flex;
+    font-family: Mulish, sans-serif;
+}
+
+.quantity-control button {
+    color: #957045;
+    padding: 4px 8px;
+    background-color: #F8F8F8;
+    border: none;
+    border-top: 1px solid #ECE9E6;
+    border-bottom: 1px solid #ECE9E6;
+}
+.quantity-control .decrease{
+    border-left: 1px solid #ECE9E6;
+}
+.quantity-control .increase{
+    border-right: 1px solid #ECE9E6;
+}
+
+.quantity-control button:hover {
+    background-color: #ECE9E6;
+}
+
+.quantity-control p {
+    height: 100%;
+    margin: 0;
+    padding: 4px 16px;
+    background-color: #F8F8F8;
+    border-top: 1px solid #ECE9E6;
+    border-bottom: 1px solid #ECE9E6;
+}

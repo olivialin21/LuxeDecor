@@ -12,20 +12,20 @@
         {% for item in cart_items %}
         <li class="cart-item-bg">
             <div class="row d-flex justify-content-between align-items-center cart-item">
-                <a class="col-3 d-block cart-img-a" href="{% url 'detail' item.product.slug %}">
+                <a class="col-5 col-md-3 d-block cart-img-a" href="{% url 'detail' item.product.slug %}">
                     <img class="cart-img" src="{{ item.product.image.url }}" alt="{{ item.product.title }}">
                 </a>
-                <div class="col-4 cart-name">
+                <div class="col-7 col-md-4 cart-name">
                     <a class="product-title" href="{% url 'detail' item.product.slug %}">
                         <h2>{{ item.product.title }}</h2>
                     </a>
                     <p class="product-date">預計 6/16 ~ 6/20 送達</p>
                 </div>
-                <div class="col-1 cart-price">
+                <div class="col-2 col-md-1 cart-price">
                     <p class="subtitle">Price</p>
-                    <p>${{ item.product.price }}</p>
+                    <p>${{ item.product.price|floatformat:0 }}</p>
                 </div>
-                <div class="col-1 cart-quantity">
+                <div class="col-3 col-md-1 cart-quantity">
                     <p class="subtitle">Qty</p>
                     <div class="quantity-control">
                         <a href="{% url 'decrease_quantity' item.product.id %}">－</a>
@@ -33,8 +33,8 @@
                         <a href="{% url 'increase_quantity' item.product.id %}">＋</a>
                     </div>
                 </div>
-                <p class="col-2 cart-totalPrice">${{ item.price }}</p>
-                <a href="{% url 'delete_product' item.product.id %}" class="col-1 cart-delete">
+                <p class="col-5 col-md-2 cart-totalPrice">${{ item.price }}</p>
+                <a href="{% url 'delete_product' item.product.id %}" class="col-2 col-md-1 cart-delete">
                     <img src="{% static "images/icon_close.png" %}" alt="delete">
                 </a>
             </div>
@@ -46,10 +46,10 @@
     {% endif %}
     <div class="subtotal-bg">
         <div class="row d-flex justify-content-between align-items-center subtotal">
-            <p class="col-2">Subtotal</p>
-            <p class="col-4">${{ total_price }}</p>
-            <a class="col-3 subtotal-browsing" href="/product/category/Living/">Keep Browsing</a>
-            <a class="col-3 subtotal-check" href="#">Checkout Now</a>
+            <p class="col-6 col-md-2">Subtotal</p>
+            <p class="col-6 col-md-4">${{ total_price }}</p>
+            <a class="col-6 col-md-3 subtotal-browsing" href="/product/category/Living/">Keep Browsing</a>
+            <a class="col-6 col-md-3 subtotal-check" href="#">Checkout Now</a>
         </div>
     </div>
 </div>

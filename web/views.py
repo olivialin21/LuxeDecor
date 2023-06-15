@@ -47,8 +47,17 @@ def product(request, category_name, subcategory_name=None):
 
 def detail(request, slug=None):
     product = get_object_or_404(Product, slug=slug)
+    prev_page = request.META.get('HTTP_REFERER')
+    current_page = request.build_absolute_uri()
+    if prev_page != current_page:
+        addToCart_quantity = 1
+        response = render(request, 'detail.html', locals())
+        response.set_cookie('addToCart_quantity', 1)
+        return response
+    else:
+        addToCart_quantity = int(request.COOKIES.get('addToCart_quantity', 1))
+    
     return render(request, 'detail.html', locals())
-
 
 def account(request):
     if request.user.is_authenticated:
@@ -189,6 +198,11 @@ def shoppingCart(request):
 
 def addToCart(request, id=None):
     product = get_object_or_404(Product, id=id)
+    quantity = request.GET.get('addToCart_quantity')
+    if not quantity:
+        quantity = 1
+    else:
+        quantity = int(quantity)
     user = request.user
 
     # 從 Cookie 中獲取現有的購物車內容
@@ -201,9 +215,9 @@ def addToCart(request, id=None):
 
     # 檢查商品是否已經在購物車中，如果是則增加數量，如果不是則添加新的商品
     if product.id in cart_items:
-        cart_items[product.id] += 1
+        cart_items[product.id] += quantity
     else:
-        cart_items[product.id] = 1
+        cart_items[product.id] = quantity
 
     # 檢查是否有使用者登入，如果有則將購物車內容同步到資料庫
     if user.is_authenticated:
@@ -217,6 +231,7 @@ def addToCart(request, id=None):
     # 將更新後的購物車內容存回 Cookie
     response = redirect(request.META.get('HTTP_REFERER', '/'))
     response.set_cookie('cart', updated_cart)
+    response.set_cookie('addToCart_quantity', 1)
 
     return response
 
@@ -240,6 +255,7 @@ def stringifyCartItems(cart_items):
     return cart
 
 def delete_product(request, product_id):
+    user = request.user
     cart = request.COOKIES.get('cart')  # 從 Cookie 中獲取購物車數據
 
     if cart:
@@ -252,6 +268,11 @@ def delete_product(request, product_id):
             # 更新 Cookie 中的購物車數據
             response = redirect('/shoppingCart/')
             response.set_cookie('cart', updated_cart)
+
+            # 如果使用者已登入，同步刪除購物車項目
+            if user.is_authenticated:
+                CartItem.objects.filter(user=user, product_id=product_id).delete()
+
             return response
 
     return redirect('/shoppingCart/')
@@ -300,3 +321,21 @@ def increase_quantity(request, product_id):
 
             return response
     return redirect('/shoppingCart/')
+
+def addToCart_decrease_quantity(request):
+    quantity = int(request.POST.get('quantity_decrease'))
+    if quantity > 1:
+        quantity -= 1
+
+    response = redirect(request.META.get('HTTP_REFERER', '/'))
+    response.set_cookie('addToCart_quantity', quantity)  # 將數量存入 Cookie
+    return response
+
+def addToCart_increase_quantity(request):
+    quantity = int(request.POST.get('quantity_increase'))
+    print(quantity)
+    quantity += 1
+
+    response = redirect(request.META.get('HTTP_REFERER', '/'))
+    response.set_cookie('addToCart_quantity', quantity)  # 將數量存入 Cookie
+    return response
