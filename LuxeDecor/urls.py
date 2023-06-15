@@ -34,4 +34,10 @@ urlpatterns = [
     path('mypage/', webviews.mypage),
     path('edit/', webviews.edit),
     path('register/', webviews.register),
+    # shopping cart
+    path('addToCart/<int:id>/', webviews.addToCart),
+    path('shoppingCart/', webviews.shoppingCart),
+    path('shoppingCart/delete/<int:product_id>/', webviews.delete_product, name='delete_product'),
+    path('shoppingCart/decrease_quantity/<int:product_id>/', webviews.decrease_quantity, name='decrease_quantity'),
+    path('shoppingCart/increase_quantity/<int:product_id>/', webviews.increase_quantity, name='increase_quantity'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

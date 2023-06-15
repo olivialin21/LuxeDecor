@@ -9,7 +9,6 @@
   top: 30px;
   transform: translateX(-50%);
 }
-
 .base_navbar {
   background-color: #ECE9E6;
   padding: 30px 24px;
@@ -43,6 +42,10 @@
   line-height: 1.5em;
 }
 
+.base-nav-bg{
+  background-color: #FAFAFA;
+}
+
 .base_nav {
   margin: 0 auto;
   max-width: 960px;
@@ -63,7 +66,7 @@
 }
 
 .base_nav_item a:hover {
-  background-color: #F3F3F3;
+  background-color: #ECE9E6 !important;
 }
 
 .base_navbar_collapse {

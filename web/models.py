@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -47,3 +48,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse("detail", args=[str(self.slug)])
 
+class CartItem(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

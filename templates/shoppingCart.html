@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/shoppingCart.css" %}" type="text/css" />
+{% endblock %}
+{% block title %}LuxeDécor{% endblock %}
+
+{% block content %}
+<div class="container story-wrapper">
+    {% if cart_items %}
+    <table>
+        <tr>
+            <th>Product Image</th>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        {% for item in cart_items %}
+        <tr>
+            <td>
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.title }}" width="100">
+            </td>
+            <td>{{ item.product.title }}</td>
+            <td>
+                <div class="quantity">
+                    <a href="{% url 'decrease_quantity' item.product.id %}" class="btn btn-quantity">-</a>
+                    <span>{{ item.quantity }}</span>
+                    <a href="{% url 'increase_quantity' item.product.id %}" class="btn btn-quantity">+</a>
+                </div>
+            </td>
+            <td>{{ item.price }}</td>
+            <td>
+                <a href="{% url 'delete_product' item.product.id %}" class="btn btn-danger">Remove</a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="3">Total:</td>
+            <td>{{ total_price }}</td>
+            <td></td>
+        </tr>
+    </table>
+    {% else %}
+    <div class="col-12 mb-5">
+        <p class="empty">Empty.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
