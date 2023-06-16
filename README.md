@@ -1,7 +1,7 @@
 # LuxeDecor
 > A Nordic Style Furniture Website.
 ---
-- [Page Link](luxedecor--olivialin21.repl.co)
+- [Page Link](https://luxedecor--olivialin21.repl.co)
 - [UI Design Figma](https://www.figma.com/proto/gMzcUKtWevpTwmuwbgjfh0/%E5%82%A2%E4%BF%B1%E7%B6%B2%E9%A0%81?type=design&node-id=28-2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=28%3A2)
 ---
 |Members|Responsibilities Assigned|Page|
