@@ -8,4 +8,4 @@
 |---|---|---|
 |[Charliebear520](https://github.com/Charliebear520)|UI Design & Programming|All page UI design, About page programming|
 |[hsiang2](https://github.com/hsiang2)|Programming|Base Footer, Home page, Product page, Detail page|
-|[Yu-Shan Lin](https://github.com/olivialin21)|Programming|Base Header, Shopping Cart, Member page, Login page, Registration page|
+|[Yu-Shan Lin](https://github.com/olivialin21)|Programming|Base Header, Shopping Cart, Member page, Login page, Registration page, Contact Us Page|
