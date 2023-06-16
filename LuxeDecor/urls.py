@@ -27,6 +27,7 @@ urlpatterns = [
     path('product/category/<str:category_name>/<str:subcategory_name>/', webviews.product),
     path('product/category/<str:category_name>/', webviews.product),
     path('product/<slug:slug>/', webviews.detail, name='detail'),
+    path('contact/', webviews.contact),
     # login
     path('account/', webviews.account),
     path('login/', webviews.login),

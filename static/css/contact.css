@@ -1,0 +1,141 @@
+p {
+    margin: 0;
+}
+
+.contact-bg {
+    background-color: #ECE9E6;
+}
+
+.contact {
+    max-width: 1280px;
+    padding: 75px 15px 24px;
+    margin: 0 auto;
+}
+
+.contact>h2 {
+    font-family: 'Antic Didone', serif;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 39px;
+}
+
+.contact>h3 {
+    font-family: 'Antic Didone', serif;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 107px;
+}
+
+.contact-info {
+    background-color: #323232;
+    padding: 100px 70px;
+    border-radius: 8px 0 0 8px;
+}
+
+.contact-bg ul {
+    margin-bottom: 0;
+}
+
+.contact-info h4 {
+    font-family: 'Antic Didone', serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.contact-info h5 {
+    font-family: 'Antic Didone', serif;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 54px;
+}
+
+.contact-info img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.contact-info p {
+    color: #DCDCDC;
+    margin-left: 24px;
+    font-size: 12px;
+}
+
+.contact-input input,
+.contact-textarea textarea {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: #F3F3F3;
+    padding: 6px 12px;
+    font-size: 20px;
+}
+
+.contact-input input:focus,
+.contact-textarea textarea:focus {
+    outline: 1px solid #3B5233;
+}
+
+.contact-input,
+.contact-textarea {
+    background-color: #C0B8A9;
+    padding: 78px 0;
+    font-family: 'Antic Didone', serif;
+    color: #fff;
+    font-size: 20px;
+}
+
+.contact-input {
+    padding-left: 49px;
+    padding-right: 1px;
+}
+
+.contact-textarea {
+    padding-top: 118px;
+    padding-left: 58px;
+    padding-right: 59px;
+    border-radius: 0 8px 8px 0;
+}
+
+.contact-textarea textarea {
+    height: 260px;
+    resize: none;
+}
+
+.contact-input-mb {
+    margin-bottom: 32px;
+}
+
+.contact-input h4 {
+    font-size: 20px;
+    margin-bottom: 14px;
+}
+
+.contact-submit {
+    display: block;
+    padding: 15px;
+    min-width: 194px;
+    margin: 47px auto 0;
+    border: 1px solid #C0B8A9;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s;
+    font-family: 'Antic Didone', serif;
+    font-size: 16px;
+}
+
+.contact-submit:hover {
+    color: #fff;
+    background-color: #323232;
+}
+
+.mess {
+    color: #631111;
+    font-size: 24px;
+    margin: 0;
+    margin-top: 16px;
+    text-align: center;
+    font-family: Antic, sans-serif;
+}

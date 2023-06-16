@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -54,3 +55,11 @@ class CartItem(models.Model):
     quantity = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+# Create your models here.
+class Message(models.Model):
+    bname = models.CharField(max_length=20, null=False, default="")
+    bemail = models.EmailField(max_length=100, null=False, default="")
+    bphoneNum = models.CharField(max_length=20, null=False, default="")
+    bcontent = models.TextField(null=False, default="")
+    bTime = models.DateTimeField(auto_now=True)

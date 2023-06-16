@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from web.models import Product, Category, SubCategory, CartItem
+from web.models import Product, Category, SubCategory, CartItem, Message
+from web.forms import PostForm
 from django.http import HttpResponse
 # login authentication
 from django.contrib.auth import authenticate
@@ -47,16 +48,18 @@ def product(request, category_name, subcategory_name=None):
 
 def detail(request, slug=None):
     product = get_object_or_404(Product, slug=slug)
-    prev_page = request.META.get('HTTP_REFERER')
-    current_page = request.build_absolute_uri()
-    if prev_page != current_page:
+    prev_page = request.COOKIES.get('prev_page', '')  # 從 cookie 中獲取先前的頁面 slug
+    print(slug,prev_page)
+
+    if prev_page != slug:
         addToCart_quantity = 1
         response = render(request, 'detail.html', locals())
         response.set_cookie('addToCart_quantity', 1)
+        response.set_cookie('prev_page', slug)  # 將當前頁面的 slug 存入 cookie
         return response
     else:
         addToCart_quantity = int(request.COOKIES.get('addToCart_quantity', 1))
-    
+
     return render(request, 'detail.html', locals())
 
 def account(request):
@@ -65,6 +68,27 @@ def account(request):
     else:
         return redirect('/login/')
 
+def contact(request):  #新增留言
+    if request.method == "POST":  #如果是以POST方式才處理
+        postform = PostForm(request.POST)  #建立forms物件
+        if postform.is_valid():  #通過forms驗證
+            name =  postform.cleaned_data['bname']
+            email = postform.cleaned_data['bemail']
+            phoneNum = postform.cleaned_data['bphoneNum']  #取得輸入資料
+            content =  postform.cleaned_data['bcontent']
+            unit = Message.objects.create(bname=name, bemail=email, bphoneNum=phoneNum, bcontent=content)  #新增資料記錄
+            unit.save()  #寫入資料庫
+            mess = 'Your message has been sent.'
+            postform = PostForm()
+            return redirect('/contact/')	
+        else:
+            print(postform.errors)
+            mess = "There has an error."
+    else:
+        postform = PostForm()
+        print(postform.errors)
+        mess = ""
+    return render(request, "contact.html", locals())
 
 def mypage(request):
     if request.user.is_authenticated:
